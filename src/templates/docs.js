@@ -8,10 +8,17 @@ import NextPrevious from '../components/NextPrevious';
 import config from '../../config';
 import { Edit, StyledHeading, StyledMainWrapper } from '../components/styles/Docs';
 
+const GATSBY_SHOW_DOCS = process.env.GATSBY_SHOW_DOCS;
+
+const GATSBY_SETTINGS_FILE = process.env.GATSBY_SETTINGS_FILE;
+
+const GATSBY_ENV = process.env.GATSBY_ENV;
+
 const forcedNavOrder = config.sidebar.forcedNavOrder;
 
 export default class MDXRuntimeTest extends Component {
   render() {
+    console.log({ GATSBY_ENV, GATSBY_SETTINGS_FILE, GATSBY_SHOW_DOCS });
     const { data } = this.props;
 
     if (!data) {
@@ -21,7 +28,7 @@ export default class MDXRuntimeTest extends Component {
       allMdx,
       mdx,
       site: {
-        siteMetadata: { docsLocation, title },
+        siteMetadata: { docsLocation },
       },
     } = data;
 
