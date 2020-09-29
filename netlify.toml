@@ -1,3 +1,25 @@
 [build]
   publish = "public"
   command = "npm run build"
+
+# contexts:
+# - production: master branch
+# - deploy preview: PRs/merges on master branch
+# - branch deploys: all other deploys
+
+# use strings to match node .env
+
+[context.production.environment]
+  GATSBY_ENV = "production"
+  GATSBY_SETTINGS_FILE = "netlify"
+  GATSBY_SHOW_DOCS = "false"
+
+[context.deploy-preview.environment]
+  GATSBY_ENV = "deploy-preview"
+  GATSBY_SETTINGS_FILE = "netlify"
+  GATSBY_SHOW_DOCS = "false"
+
+[context.branch-deploy.environment]
+  GATSBY_ENV = "branch-deploy"
+  GATSBY_SETTINGS_FILE = "netlify"
+  GATSBY_SHOW_DOCS = "true"

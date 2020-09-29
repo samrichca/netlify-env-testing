@@ -1,4 +1,7 @@
-const componentWithMDXScope = require('gatsby-plugin-mdx/component-with-mdx-scope');
+// uncomment to use process.env.* in node
+// require("dotenv").config({
+//   path: `.env.${process.env.NODE_ENV}`,
+// })
 
 const path = require('path');
 
