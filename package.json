@@ -55,10 +55,16 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "start": "gatsby develop",
+    "build-netlify-branch-deploy": "netlify build --context branch-deploy",
+    "build-netlify-deploy-preview": "netlify build --context deploy-preview",
+    "build-netlify-production": "netlify build --context production",
     "build": "gatsby build --prefix-paths",
+    "deploy": "npm run build-netlify-branch-deploy && netlify deploy",
+    "dev": "gatsby develop",
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
-    "lint": "eslint --fix \"src/**/*.{js,jsx}\""
+    "lint": "eslint --fix \"src/**/*.{js,jsx}\"",
+    "prod": "npm run build && npm run serve",
+    "serve": "NODE_ENV=production gatsby serve"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
